@@ -4,7 +4,7 @@
   gather_facts: no
   tasks:
     - name: verificare_ping
-      ping:
+      ansible.builtin.ping:
       register: ping_result
 
     - name: raspunde
