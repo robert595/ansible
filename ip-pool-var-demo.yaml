@@ -9,11 +9,11 @@
       ignore_errors: yes
 
     - name: raspunde
-      debug:
-        msg: "Host-ul {{ inventory_hostname }} ({{ ansible_host }}) raspunde la ping"
+      ansible.builtin.debug:
+        msg: "Host-ul {{ inventory_hostname }} cu IP:{{ ansible_host }} raspunde la ping"
       when: ping_result.ping
 
     - name: nu_raspunde
-      debug:
-        msg: "Host-ul {{ inventory_hostname }} ({{ ansible_host }}) NU raspunde la ping"
+      ansible.builtin.debug:
+        msg: "Host-ul {{ inventory_hostname }} cu IP {{ ansible_host }} NU raspunde la ping"
       when: not ping_result.ping
