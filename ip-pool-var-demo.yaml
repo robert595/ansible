@@ -6,6 +6,7 @@
     - name: verificare_ping
       ansible.builtin.ping:
       register: ping_result
+      ignore_errors: yes
 
     - name: raspunde
       debug:
