@@ -4,16 +4,16 @@
   gather_facts: no
   tasks:
     - name: verificare_ping
-      ansible.builtin.ping:
+      shell: ping -c 1 {{ansible_host}}
       register: ping_result
       ignore_errors: yes
 
     - name: raspunde
       ansible.builtin.debug:
         msg: "Host-ul {{ inventory_hostname }} cu IP:{{ ansible_host }} raspunde la ping"
-      when: ping_result.ping
+      when: "'UNREACHABLE' not in ping_result.stdout"
 
     - name: nu_raspunde
       ansible.builtin.debug:
         msg: "Host-ul {{ inventory_hostname }} cu IP {{ ansible_host }} NU raspunde la ping"
-      when: not ping_result.ping
+      when: "'UNREACHABLE' in ping_result.stdout"
