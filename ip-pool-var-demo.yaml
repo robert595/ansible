@@ -1,4 +1,4 @@
---
+---
 - name: ping_check
   hosts: all
   gather_facts: no
